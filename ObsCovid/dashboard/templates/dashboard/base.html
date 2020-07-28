@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/img/favicon.png' %}">
+
+    <title>{% block title %} Dashboard - Observatorio COVID-19 {% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/style.css' %}">
+
+    <!-- Specific CSS -->
+    {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!--================ Cabezera =================-->
+        <div class="header">
+			<div class="header-left">
+				<a href="" class="logo">
+					<!-- <img src="{% static 'dashboard/img/logo.png' %}" alt=""> -->
+                    <span>Dashboard - COVID</span>
+				</a>
+			</div>
+
+            <!--================ Menu Usuario Area =================-->
+			<a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+            <ul class="nav user-menu float-right">
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                        <span class="user-img">
+							<img class="rounded-circle" src="{% static 'dashboard/img/user.jpg' %}" width="24" alt="Admin">
+							<span class="status online"></span>
+						</span>
+						<span>Admin</span>
+                    </a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="">Mi Perfil</a>
+						<!-- <a class="dropdown-item" href="">Edit Profile</a> -->
+						<a class="dropdown-item" href="">Configuracion</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                          Cerar Sesion
+                        </a>
+					</div>
+                </li>
+            </ul>
+            <!--================ End Menu Usuario Area =================-->
+
+            <!--================Mobile Menu Area =================-->
+            <div class="dropdown mobile-user-menu float-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="">Mi Perfil</a>
+                        <a class="dropdown-item" href="">Configuracion</a>
+                        <a class="dropdown-item" href="{% url 'core:home' %}">Salir</a>
+                </div>
+            </div>
+            <!--================End Mobile Menu Area =================-->
+        </div>
+        <!--================ End Cabezera =================-->
+
+        <!--================ Menu Principal =================-->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <!-- <li class="menu-title">Menu Principal</li> -->
+                        <li class="active">
+                            <a href=""><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        </li>
+						<li class="submenu">
+							<a href="#"><i class="fa fa-wheelchair"></i> <span> Pacientes </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="{% url 'dashboard:paciente_list' %}">Lista de Pacientes</a></li>
+								<li><a href="">Nuevo Paciente</a></li>
+							</ul>
+						</li>
+						<li class="submenu">
+							<a href="#"><i class="fa fa-flag-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href=""> Pacientes Recuperados </a></li>
+								<li><a href=""> Pacientes Fallecidos </a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href=""><i class="fa fa-cog"></i> <span>Configuraciones</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--================ End Menu Principal =================-->
+
+        <!--================ Bloque de Contenido Principal =================-->
+        {% block content %}{% endblock content %}
+        <!--================ End Bloque de Contenido Principal =================-->
+
+    </div>
+    
+    <div class="sidebar-overlay" data-reff=""></div>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Quieres salir del Dashboard?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">Es posible que los cambios no se guarden.</div>
+            <div class="modal-footer">
+              <a class="btn btn-primary" href="{% url 'core:logout'%}">Cerrar Sesion</a>
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="{% static 'dashboard/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'dashboard/js/popper.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'dashboard/js/app.js' %}"></script>
+
+    !-- Specific JS -->
+    {% block js %}{% endblock js %}
+
+</body>
+</html>

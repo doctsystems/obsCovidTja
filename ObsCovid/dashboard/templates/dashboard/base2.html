@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{% load static %}
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1" />
+<meta name="author" content="diegoosvaldo85" />
+<meta name="description" content="Dashboard of Observatorio COVID-19" />
+<meta name="keywords" content="covid dashboard, HTML UI KIT" />
+
+<title>{% block title %} Dashboard - Observatorio COVID-19 {% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'dashboard/css/swiper.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/jquery.scrollbar.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/daterangepicker.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/select2.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/ion.rangeSlider.min.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+<!-- Specific CSS -->
+{% block addcss %}{% endblock addcss %}
+
+</head>
+
+<body>
+
+<div class="dashboard-wrap">
+
+	<header class="sidebar-header">
+		<h1 class="sidebar-header__logo">Dash<span><strong>COVID-19</strong></span></h1>
+	</header>
+	
+	{% block MenuPrincipal %}
+	<!-- MenuPrincipal -->
+	<div class="section section--sidebar" id="sidebar">
+		<nav class="sidebar-menu"> 
+			<ul>
+				<li class="dashboard"><a href="{% url 'dashboard:dash' %}"><b>Dashboard</b></a></li>
+				<li class="doctors has-submenu"><a href=""><b>Doctores<span class="submenu-arrow"></span></b></a>
+					<ul class="sidebar-menu__submenu">
+						<li><a href="">Nuevo doctor</a></li>
+						<li><a href="">Ver todos</a></li>
+					</ul>
+				</li>
+				<li class="patients has-submenu"><a href="#"><b>Pacientes<span class="submenu-arrow"></span></b></a>
+					<ul class="sidebar-menu__submenu">
+						<li><a href="">Nuevo paciente</a></li>
+						<li><a href="{% url 'dashboard:paciente_list' %}">Ver todos</a></li>
+						<li><a href="">Perfil de paciente</a></li>
+					</ul>
+				</li>		
+				<li class="inbox"><a href=""><b>Mensajes<span class="submenu-bubble">3</span></b></a></li>
+				<li class="settings"><a href="#"><b>Configuracion</b></a></li>
+			</ul>
+		</nav>
+	</div><!-- End MenuPrincipal -->
+	{% endblock MenuPrincipal %}
+	
+	<!-- Seccion Contenido -->
+	<div class="section section--content" id="content">
+
+		<!-- Header -->
+		{% block header %}
+		<header class="content-header">
+			<div class="sidebar-resize">
+			</div>
+			<div class="mobile-menu">
+				<div class="st-burger-icon st-burger-icon--medium">
+					<span></span>
+				</div>
+			</div>
+			<div class="content-header__user content-header__dropdown">  
+			    <div class="content-header__user-avatar content-header__dropdown-activate" data-dropdown="userdropdown">
+					<div class="content-header__user-thumb">
+						<img src="{% static 'dashboard/images/avatar-2.jpg' %}" alt="" title=""/>
+					</div>
+					<span class="content-header__user-name">Diego Osvaldo</span>
+			    </div>  
+				<nav class="dropdown-menu dropdown-menu--header dropdown-menu--user-menu " id="userdropdown"> 	
+				<h3 class="dropdown-menu__subtitle">Menu</h3>
+				<ul>   
+				    <li><a href="#">Mi perfil</a></li>
+				    <li><a href="#">Actividad</a></li>
+				    <li><a href="#">Cambiar de cuenta</a></li>
+				    <li><a href="#">Soporte</a></li>
+				    <li class="logout modal-toggle" data-openpopup="logout"><a href="#">Salir</a></li>
+				</ul>
+				</nav>
+			</div>
+			<div class="mobile-submenu"></div>
+			<nav class="content-header__menu">       
+				<ul>
+					<li class="user selected"><a href="">Add nuevo paciente</a></li>
+					<li class="prescription modal-toggle" data-openpopup="prescription"><a href="#">Realizar prescripcion</a></li>
+					<li class="reports modal-toggle" data-openpopup="reports"><a href="#">Generar reporte</a></li>
+				</ul>
+			</nav>
+		</header>
+		{% endblock header %}
+
+		<!-- Content -->
+		{% block content %} {% endblock content %}
+
+	</div><!-- End Seccion Contenido -->
+</div><!-- Wrap End -->
+
+<!-- Panel de Configuracion -->
+{% block PanelConfiguracion %}
+<div class="section section-panel" id="panel">
+	<div class="panel-resize"></div>
+	<div class="section-panel__content scrollbar-macosx">
+		<div class="grid">
+		        <div class="grid__row">	
+				<div class="grid__col grid__col--padding">
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Panel de Configuracion</h3>
+						</div>		
+					</div>
+					<div class="grid__row align-c">
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label pb0">Habilitar opcion</label>
+						</div>
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<div class="form__switcher">
+								<label class="switch">
+								<input class="switch__input" type="checkbox" data-role="none" checked />
+								<span class="switch__label" data-on="On" data-off="Off"></span> <span class="switch__handle"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="grid__row align-c">
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label pb0">Deshabilitar opcion</label>
+						</div>
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<div class="form__switcher">
+								<label class="switch">
+								<input class="switch__input" type="checkbox" data-role="none"/>
+								<span class="switch__label" data-on="On" data-off="Off"></span> <span class="switch__handle"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="grid__row align-c">
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label pb0">Habilitar opcion</label>
+						</div>
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<div class="form__switcher">
+								<label class="switch">
+								<input class="switch__input" type="checkbox" data-role="none" checked />
+								<span class="switch__label" data-on="On" data-off="Off"></span> <span class="switch__handle"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="grid__row align-c">
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label pb0">Deshabilitar opcion</label>
+						</div>
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<div class="form__switcher">
+								<label class="switch">
+								<input class="switch__input" type="checkbox" data-role="none"/>
+								<span class="switch__label" data-on="On" data-off="Off"></span> <span class="switch__handle"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Custom radios</h3>
+						</div>		
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<label class="form__label">CUSTOM RADIO SETTINGS</label>
+							<div class="form__radio">
+								<input type="radio" name="cr" id="cr1" value="1" checked /><label for="cr1">Option 1</label>
+							</div>
+							<div class="form__radio">
+								<input type="radio" name="cr" id="cr2" value="2" /><label for="cr2">Option 2</label>
+							</div>
+							<div class="form__radio">
+								<input type="radio" name="cr" id="cr3" value="3" /><label for="cr3">Option 3</label>
+							</div>
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Custom checkboxes</h3>
+						</div>		
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<label class="form__label">CUSTOM CHECKBOX SETTINGS</label>
+							<div class="form__checkbox">
+								<input type="checkbox" name="cc1" id="cc1" value="1" checked /><label for="cc1">Checkbox 1</label>
+							</div>
+							<div class="form__checkbox">
+								<input type="checkbox" name="cc2" id="cc2" value="2" /><label for="cc2">Checkbox 2</label>
+							</div>
+							<div class="form__checkbox">
+								<input type="checkbox" name="cc3" id="cc3" value="3" /><label for="cc3">Checkbox 3</label>
+							</div>
+						</div>
+					</div>
+					
+
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Custom Slider</h3>
+						</div>		
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<label class="form__label">CUSTOM SINGLE SLIDER</label>
+								<input type="text" class="js-slider" name="my_range" value="" />
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin mb0">
+							<label class="form__label">CUSTOM RANGE SLIDER</label>
+								<input type="text" class="js-range-slider" name="my_range" value="" />
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div><!-- End of Grid -->	
+	</div>
+</div><!-- End Panel de Configuracion -->
+{% endblock PanelConfiguracion %}
+ 
+<!-- Modal - Appointment -->
+{% block ConsultaModal %}
+<div class="modal modal--appointment">
+	<div class="modal__overlay modal__overlay--toggle">
+	</div>
+	<div class="modal__wrapper modal-transition">
+		<div class="modal__body">
+			<div class="modal__header">
+				<h2 class="modal__header-title">Crear Consulta</h2>
+				<div class="modal__close modal__overlay--toggle"><span></span></div>
+			</div>
+			<div class="modal__content">
+				<div class="grid">
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion del paciente</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--13 grid__col--margin">
+							<label class="form__label">NOMBRE</label>
+							<select class="custom-select" name="appname">
+								<option value="Patient Name">Emma Williams</option>
+								<option value="Patient Name">Olivia Johnson</option>
+								<option value="Patient Name">Ava Jones</option>
+								<option value="Patient Name">Isabella Brown</option>
+								<option value="Patient Name">Sophia Davis</option>
+								<option value="Patient Name">Mia Latin</option>
+								<option value="Patient Name">Amelia Miller</option>
+								<option value="Patient Name">Charlotte Wilson</option>
+								<option value="Patient Name">Abigail Moore</option>
+								<option value="Patient Name">Emily Anderson</option>
+								<option value="Patient Name">Harper Thomas</option>
+								<option value="Patient Name">Evelyn Jackson</option>
+								<option value="Patient Name">Madison Taylor</option>
+								<option value="Patient Name">Victoria White</option>
+								<option value="Patient Name">Sofia Harris</option>
+								<option value="Patient Name">Scarlett Martin</option>
+								<option value="Patient Name">Aria Thompson</option>
+								<option value="Patient Name">Elizabeth Robinson</option>
+								<option value="Patient Name">Camila Lewis</option>
+								<option value="Patient Name">Layla Garcia</option>
+								<option value="Patient Name">Ella Walker</option>
+								<option value="Patient Name">Chloe Clark</option>
+								<option value="Patient Name">Zoey Rodriguez</option>
+								<option value="Patient Name">Penelope Martinez</option>
+								<option value="Patient Name">Matthew Jones</option>
+								<option value="Patient Name">Benjamin Brown</option>
+								<option value="Patient Name">Alexander Davies</option>
+								<option value="Patient Name">William Evans</option>
+								<option value="Patient Name">Daniel Smith</option>
+								<option value="Patient Name">Jayden Taylor</option>
+								<option value="Patient Name">Oliver Thomas</option>
+								<option value="Patient Name">Carter Roberts</option>
+								<option value="Patient Name">Sebastian Walker</option>
+								<option value="Patient Name">Joseph Johnson</option>
+								<option value="Patient Name">David Thompson</option>
+								<option value="Patient Name">Gabriel Wood</option>
+								<option value="Patient Name">Julian Robinson</option>
+								<option value="Patient Name">Jackson Wright</option>
+								<option value="Patient Name">Anthony King</option>
+								<option value="Patient Name">Dylan Cooper</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">FECHA DE NACIMIENTO</label>
+									<input type="text" name="birthday" class="form__input" value="02/03/1983" />
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">TELEFONO</label>
+									<input type="text" name="appphone" class="form__input" value="" />
+						</div>
+					</div>
+					<div class="grid__row  grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion de Appointment</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label">UBICACION</label>
+							<select class="custom-select" name="applocation">
+								<option value="Los Angeles">H Clinic, Houston Street</option>
+								<option value="Washington">Hostpital Washington</option>
+								<option value="New York">Clinic 54 New York</option>
+								<option value="Chicago">43V Room Chicago</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+									<label class="form__label">FECHA &amp; HORA</label>
+									<input type="text" name="timepicker" class="form__input" value="" />
+						</div>
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Información de examen</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--13 grid__col--margin">
+							<label class="form__label">TIPO</label>
+							<select class="custom-select" name="apptype">
+								<option value="Examination">Abdominal radiology</option>
+								<option value="Examination">Breast imaging</option>
+								<option value="Examination">Cardiothoracic radiology</option>
+								<option value="Examination">Cardiovascular radiology</option>
+								<option value="Examination">Chest radiology</option>
+								<option value="Examination">Emergency radiology</option>
+								<option value="Examination">Endovascular surgical neuroradiology</option>
+								<option value="Examination">Gastrointestinal radiology</option>
+								<option value="Examination">Genitourinary radiology</option>
+								<option value="Examination">Head and neck radiology</option>
+								<option value="Examination">Interventional radiology</option>
+								<option value="Examination">Musculoskeletal radiology</option>
+								<option value="Examination">Neuroradiology</option>
+								<option value="Examination">Nuclear radiology</option>
+								<option value="Examination">Pediatric radiology</option>
+								<option value="Examination">Radiation oncology</option>
+								<option value="Examination">Vascular and interventional radiology</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">DOCTOR</label>
+									<select class="custom-select" name="apptype">
+										<option value="Patient Name">Dr. Alexander Davies</option>
+										<option value="Patient Name">Dr. William Evans</option>
+										<option value="Patient Name">Dr. Daniel Smith</option>
+										<option value="Patient Name">Dr. Jayden Taylor</option>
+										<option value="Patient Name">Dr. Oliver Thomas</option>
+										<option value="Patient Name">Dr. Carter Roberts</option>
+										<option value="Patient Name">Dr. Sebastian Walker</option>
+										<option value="Patient Name">Dr. Joseph Johnson</option>
+										<option value="Patient Name">Dr. David Thompson</option>
+										<option value="Patient Name">Dr. Gabriel Wood</option>
+										<option value="Patient Name">Dr. Julian Robinson</option>
+									</select>
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">NOTA</label>
+									<input name="notes" id="notes" class="form__input" type="text" />
+						</div>
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<input type="submit" name="submit" class="button button--submit button--blue-bg" id="submit" value="ADD APPOINTMENT" />	
+						</div>
+					</div>
+				</div><!-- End of Grid -->
+			</div> 
+		</div>
+	</div>
+</div> 
+{% endblock ConsultaModal %}
+
+<!-- Modal - prescription -->
+{% block PrescipcionModal %}
+<div class="modal modal--prescription">
+	<div class="modal__overlay modal__overlay--toggle">
+	</div>
+	<div class="modal__wrapper modal-transition">
+		<div class="modal__body">
+			<div class="modal__header">
+				<h2 class="modal__header-title">Crear prescripcion</h2>
+				<div class="modal__close modal__overlay--toggle"><span></span></div>
+			</div>
+			<div class="modal__content">
+				<div class="grid">
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion del paciente</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--13 grid__col--margin">
+							<label class="form__label">NOMBRE</label>
+							<select class="custom-select" name="appname">
+								<option value="Patient Name">Emma Williams</option>
+								<option value="Patient Name">Olivia Johnson</option>
+								<option value="Patient Name">Ava Jones</option>
+								<option value="Patient Name">Isabella Brown</option>
+								<option value="Patient Name">Sophia Davis</option>
+								<option value="Patient Name">Mia Latin</option>
+								<option value="Patient Name">Amelia Miller</option>
+								<option value="Patient Name">Charlotte Wilson</option>
+								<option value="Patient Name">Abigail Moore</option>
+								<option value="Patient Name">Emily Anderson</option>
+								<option value="Patient Name">Harper Thomas</option>
+								<option value="Patient Name">Evelyn Jackson</option>
+								<option value="Patient Name">Madison Taylor</option>
+								<option value="Patient Name">Victoria White</option>
+								<option value="Patient Name">Sofia Harris</option>
+								<option value="Patient Name">Scarlett Martin</option>
+								<option value="Patient Name">Aria Thompson</option>
+								<option value="Patient Name">Elizabeth Robinson</option>
+								<option value="Patient Name">Camila Lewis</option>
+								<option value="Patient Name">Layla Garcia</option>
+								<option value="Patient Name">Ella Walker</option>
+								<option value="Patient Name">Chloe Clark</option>
+								<option value="Patient Name">Zoey Rodriguez</option>
+								<option value="Patient Name">Penelope Martinez</option>
+								<option value="Patient Name">Matthew Jones</option>
+								<option value="Patient Name">Benjamin Brown</option>
+								<option value="Patient Name">Alexander Davies</option>
+								<option value="Patient Name">William Evans</option>
+								<option value="Patient Name">Daniel Smith</option>
+								<option value="Patient Name">Jayden Taylor</option>
+								<option value="Patient Name">Oliver Thomas</option>
+								<option value="Patient Name">Carter Roberts</option>
+								<option value="Patient Name">Sebastian Walker</option>
+								<option value="Patient Name">Joseph Johnson</option>
+								<option value="Patient Name">David Thompson</option>
+								<option value="Patient Name">Gabriel Wood</option>
+								<option value="Patient Name">Julian Robinson</option>
+								<option value="Patient Name">Jackson Wright</option>
+								<option value="Patient Name">Anthony King</option>
+								<option value="Patient Name">Dylan Cooper</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+							<label class="form__label">FECHA DE NACIMIENTO</label>
+							<input type="text" name="birthday" class="form__input" value="02/03/1983" />
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">TELEFONO</label>
+									<input type="text" name="appphone" class="form__input" value="" />
+						</div>
+					</div>
+					<div class="grid__row  grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion de prescripcion</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label">MEDICACION</label>
+							<select class="custom-select" name="applocation">
+									<option value="Acetaminophen">Acetaminophen</option>
+									<option value="Adderall">Adderall</option>
+									<option value="Alprazolam">Alprazolam</option>
+									<option value="Amitriptyline">Amitriptyline</option>
+									<option value="Amlodipine">Amlodipine</option>
+									<option value="Amoxicillin">Amoxicillin</option>
+									<option value="Ativan">Ativan</option>
+									<option value="Atorvastatin">Atorvastatin</option>
+									<option value="Azithromycin">Azithromycin</option>
+									<option value="Ciprofloxacin">Ciprofloxacin</option>
+									<option value="Citalopram">Citalopram</option>
+									<option value="Clindamycin">Clindamycin</option>
+									<option value="Clonazepam">Clonazepam</option>
+									<option value="Codeine">Codeine</option>
+									<option value="Cyclobenzaprine">Cyclobenzaprine</option>
+									<option value="Cymbalta">Cymbalta</option>
+									<option value="Doxycycline">Doxycycline</option>
+									<option value="Gabapentin">Gabapentin</option>
+									<option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+									<option value="Ibuprofen">Ibuprofen</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label">PERIODO DE MEDICACION</label>
+							<input type="text" name="dates" class="form__input" value="" />
+						</div>
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion del Doctor</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--13 grid__col--margin">
+							<label class="form__label">DOCTOR</label>
+							<select class="custom-select" name="apptype">
+								<option value="Patient Name">Dr. Alexander Davies</option>
+								<option value="Patient Name">Dr. William Evans</option>
+								<option value="Patient Name">Dr. Daniel Smith</option>
+								<option value="Patient Name">Dr. Jayden Taylor</option>
+								<option value="Patient Name">Dr. Oliver Thomas</option>
+								<option value="Patient Name">Dr. Carter Roberts</option>
+								<option value="Patient Name">Dr. Sebastian Walker</option>
+								<option value="Patient Name">Dr. Joseph Johnson</option>
+								<option value="Patient Name">Dr. David Thompson</option>
+								<option value="Patient Name">Dr. Gabriel Wood</option>
+								<option value="Patient Name">Dr. Julian Robinson</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--23 grid__col--margin">
+							<label class="form__label">NOTES</label>
+							<input name="notes" id="notes" class="form__input" type="text" />
+						</div>
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<input type="submit" name="submit" class="button button--submit button--inline button--blue-bg" id="submit" value="SAVE PRESCRIPTION" />
+							<input type="submit" name="submit" class="button button--submit button--inline button--blue-bg" id="submit" value="SAVE &amp; PRINT" />								
+						</div>
+					</div>
+				</div><!-- End of Grid -->
+			</div> 
+		</div>
+	</div>
+</div> 
+{% endblock PrescipcionModal %} 
+ 
+<!-- Modal - reports -->
+{% block ReporteModal %}
+<div class="modal modal--reports">
+		
+		<div class="modal__overlay modal__overlay--toggle"></div>
+		<div class="modal__wrapper modal-transition">
+		  
+		<div class="modal__body">
+			<div class="modal__header">
+				<h2 class="modal__header-title">Generar reporte</h2>
+				<div class="modal__close modal__overlay--toggle"><span></span></div>
+			</div>
+			<div class="modal__content">					
+		
+				<div class="grid">
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion del Paciente</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--13 grid__col--margin">
+							<label class="form__label">NOMBRE</label>
+							<select class="custom-select" name="appname">
+								<option value="Patient Name">Emma Williams</option>
+								<option value="Patient Name">Olivia Johnson</option>
+								<option value="Patient Name">Ava Jones</option>
+								<option value="Patient Name">Isabella Brown</option>
+								<option value="Patient Name">Sophia Davis</option>
+								<option value="Patient Name">Mia Latin</option>
+								<option value="Patient Name">Amelia Miller</option>
+								<option value="Patient Name">Charlotte Wilson</option>
+								<option value="Patient Name">Abigail Moore</option>
+								<option value="Patient Name">Emily Anderson</option>
+								<option value="Patient Name">Harper Thomas</option>
+								<option value="Patient Name">Evelyn Jackson</option>
+								<option value="Patient Name">Madison Taylor</option>
+								<option value="Patient Name">Victoria White</option>
+								<option value="Patient Name">Sofia Harris</option>
+								<option value="Patient Name">Scarlett Martin</option>
+								<option value="Patient Name">Aria Thompson</option>
+								<option value="Patient Name">Elizabeth Robinson</option>
+								<option value="Patient Name">Camila Lewis</option>
+								<option value="Patient Name">Layla Garcia</option>
+								<option value="Patient Name">Ella Walker</option>
+								<option value="Patient Name">Chloe Clark</option>
+								<option value="Patient Name">Zoey Rodriguez</option>
+								<option value="Patient Name">Penelope Martinez</option>
+								<option value="Patient Name">Matthew Jones</option>
+								<option value="Patient Name">Benjamin Brown</option>
+								<option value="Patient Name">Alexander Davies</option>
+								<option value="Patient Name">William Evans</option>
+								<option value="Patient Name">Daniel Smith</option>
+								<option value="Patient Name">Jayden Taylor</option>
+								<option value="Patient Name">Oliver Thomas</option>
+								<option value="Patient Name">Carter Roberts</option>
+								<option value="Patient Name">Sebastian Walker</option>
+								<option value="Patient Name">Joseph Johnson</option>
+								<option value="Patient Name">David Thompson</option>
+								<option value="Patient Name">Gabriel Wood</option>
+								<option value="Patient Name">Julian Robinson</option>
+								<option value="Patient Name">Jackson Wright</option>
+								<option value="Patient Name">Anthony King</option>
+								<option value="Patient Name">Dylan Cooper</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">FECHA DE NACIMIENTO</label>
+									<input type="text" name="birthday" class="form__input" value="02/03/1983" />
+						</div>
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">TELEFONO</label>
+									<input type="text" name="appphone" class="form__input" value="" />
+						</div>
+					</div>
+					<div class="grid__row  grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion del Reporte</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+							<label class="form__label">TIPO</label>
+							<select class="custom-select" name="applocation">
+									<option value="Diseases">Diseases report</option>
+									<option value="Activity">Activity report</option>
+							</select>
+						</div>
+						<div class="grid__col grid__col--mb-12 grid__col--margin">
+									<label class="form__label">PERIODO</label>
+									<input type="text" name="dates" class="form__input" value="" />
+						</div>
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Informacion del Doctor</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--13 grid__col--margin">
+									<label class="form__label">Generado por: Doctor</label>
+									<select class="custom-select" name="apptype">
+										<option value="Patient Name">Dr. Alexander Davies</option>
+										<option value="Patient Name">Dr. William Evans</option>
+										<option value="Patient Name">Dr. Daniel Smith</option>
+										<option value="Patient Name">Dr. Jayden Taylor</option>
+										<option value="Patient Name">Dr. Oliver Thomas</option>
+										<option value="Patient Name">Dr. Carter Roberts</option>
+										<option value="Patient Name">Dr. Sebastian Walker</option>
+										<option value="Patient Name">Dr. Joseph Johnson</option>
+										<option value="Patient Name">Dr. David Thompson</option>
+										<option value="Patient Name">Dr. Gabriel Wood</option>
+										<option value="Patient Name">Dr. Julian Robinson</option>
+									</select>
+						</div>
+						<div class="grid__col grid__col--23 grid__col--margin">
+									<label class="form__label">NOTAS</label>
+									<input name="notes" id="notes" class="form__input" type="text" />
+						</div>
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<input type="submit" name="submit" class="button button--submit button--blue-bg" id="submit" value="GENERATE REPORT" />							
+						</div>
+					</div>
+				</div> <!-- End of Grid -->
+
+			</div> 
+
+			
+		</div>
+
+		</div>
+</div>
+{% endblock ReporteModal %}
+
+<!-- Logout Modal-->
+{% block LogoutModal %}
+<div class="modal modal--logout">
+	<div class="modal__overlay modal__overlay--toggle"></div>
+	<div class="modal__logout modal-transition">
+		<div class="modal__body">
+			<div class="modal__header">
+				<h2 class="modal__header-title">Quieres salir del Dashboard?</h2>
+				<div class="modal__close modal__overlay--toggle"><span></span></div>
+			</div>
+			<div class="modal__content">
+				<div class="grid">
+					<div class="grid__row  grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<h3 class="grid__col-title">Es posible que algunos cambios realizados </br>no se hayan guardado.</h3>
+						</div>		
+					</div>
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<a class="button button--submit button--blue-bg" href="{% url 'core:logout'%}">CERRAR SESION</a>
+						</div>
+						<div class="grid__col grid__col--margin">
+							<a class="button button--submit button--blue-bg modal__overlay--toggle">CANCELAR</a>
+						</div>
+					</div>
+				</div> <!-- End of Grid -->
+			</div> 
+		</div>
+	</div>
+</div>
+{% endblock LogoutModal %}
+
+{% block js %}
+<script src="{% static 'dashboard/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'dashboard/js/Chart.min.js' %}"></script>
+<script src="{% static 'dashboard/js/chartjs-plugin-style.min.js' %}"></script>
+<script src="{% static 'dashboard/js/charts-custom-dashboard.js' %}"></script>
+<script src="{% static 'dashboard/js/moment.min.js' %}"></script>
+<script src="{% static 'dashboard/js/calendar.js' %}"></script>
+<script src="{% static 'dashboard/js/swiper.min.js' %}"></script>
+<script src="{% static 'dashboard/js/select2.min.js' %}"></script>
+<script src="{% static 'dashboard/js/jquery.scrollbar.js' %}"></script>
+<script src="{% static 'dashboard/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'dashboard/js/daterangepicker.min.js' %}"></script>
+<script src="{% static 'dashboard/js/ion.rangeSlider.min.js' %}"></script>
+<script src="{% static 'dashboard/js/jquery.dashboard-custom.js' %}"></script>
+{% endblock js %}
+
+<!-- Specific JS -->
+{% block addjs %}{% endblock addjs %}
+
+</body>
+
+</html>

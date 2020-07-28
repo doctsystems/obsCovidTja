@@ -1,0 +1,284 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+    {% block content %}
+    <!--================Home Banner Area =================-->
+    <section class="home_banner_area">
+      <div class="container">
+        <div class="row home_banner_inner">
+          <div class="col-sm-7">
+            <h5 class="wow fadeInUp" data-wow-delay="300ms">Detengamos al COVID-19</h5>
+            <h3 class="wow fadeInUp" data-wow-delay="500ms">¿Cómo podemos luchar contra el coronavirus?
+            </h3>
+            <p class="wow fadeInUp" data-wow-delay="400ms">
+              Nunca ha sido más claro que todos somos ciudadanos del mundo,
+              y todos tenemos un papel que desempeñar. La nueva cepa de
+              coronavirus, ha alcanzado oficialmente proporciones pandémicas.
+            </p>
+            <!-- <a class="main_btn wow fadeInLeft" data-wow-delay="300ms" href="">Como prevenir</a> -->
+            <div class="row home_option">
+              <div class="col-lg-6 wow fadeIn" data-wow-delay="300ms">
+                <div class="media">
+                  <div class="d-flex">
+                    <i class="linearicons-shield-check"></i>
+                  </div>
+                  <div class="media-body">
+                    <h4>Proteccion</h4>
+                    <p><a class="text_btn" href="#">Como protegerte <i class="linearicons-arrow-right"></i></a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 wow fadeIn" data-wow-delay="400ms">
+                <div class="media">
+                  <div class="d-flex">
+                    <i class="linearicons-pulse"></i>
+                  </div>
+                  <div class="media-body">
+                    <h4>Sintomas</h4>
+                    <p><a class="text_btn" href="#">Sintomas basicos <i class="linearicons-arrow-right"></i></a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 wow fadeIn" data-wow-delay="500ms">
+                <div class="media">
+                  <div class="d-flex">
+                    <i class="linearicons-bubbles"></i>
+                  </div>
+                  <div class="media-body">
+                    <h4>Consulta medica</h4>
+                    <p><a class="text_btn" href="#">Consulta en linea <i class="linearicons-arrow-right"></i></a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 wow fadeIn" data-wow-delay="600ms">
+                <div class="media">
+                  <div class="d-flex">
+                    <i class="linearicons-document2"></i>
+                  </div>
+                  <div class="media-body">
+                    <h4>Acerca del COVID-19</h4>
+                    <p><a class="text_btn" href="#">Leer más <i class="linearicons-arrow-right"></i></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <img class="img-fluid wow fadeInRight" data-wow-delay="400ms"
+              src="{% static 'core/images/svg/home-banner-cleaner.svg' %}" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+    <!--================Check Test Now Area =================-->
+    <section class="check_now_area">
+      <div class="container">
+        <div class="row m-0 justify-content-between">
+          <div class="left">
+            <div class="media">
+              <div class="d-flex">
+                <img src="{% static 'core/images/check-1.png' %}" alt="" />
+                <img src="{% static 'core/images/check-2.png' %}" alt="" />
+                <img src="{% static 'core/images/check-3.png' %}" alt="" />
+              </div>
+              <div class="media-body">
+                <h4>Crees que podrías estar contagiado?</h4>
+                <p>Prueba nuestro test de coronavirus para saber que hacer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <a class="icon_btn wow fadeInRight" data-wow-delay="400ms" href="#">Revisalo ahora<i
+                class="linearicons-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Check Test Now Area =================-->
+
+    <!--================Worldwide Tracker Area =================-->
+    <section class="world_wide_tracker pad_top">
+      <div class="container">
+        <img class="tracker_map" src="{% static 'core/images/tracker-map-bg.png' %}" alt="" />
+        <div class="tracker_text">
+          <h5>Reporte Nacional</h5>
+          <h2>Casos de Coronavirus</h2>
+          <p>Ultima actualizacion: Sábado, 25 de Julio de 2020</p>
+        </div>
+        <div class="row tracker_inner">
+          <div class="col-lg-3 col-6 wow fadeIn" data-wow-delay="300">
+            <div class="media">
+              <div class="d-flex">
+                <img src="{% static 'core/images/icon/corona-red-1.png' %}" alt="" />
+              </div>
+              <div class="media-body">
+                <h2>68,281</h2>
+                <p>Total Casos</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6 wow fadeIn" data-wow-delay="400">
+            <div class="media">
+              <div class="d-flex">
+                <img src="{% static 'core/images/icon/corona-black-1.png' %}" alt="" />
+              </div>
+              <div class="media-body">
+                <h2>2,535</h2>
+                <p>Fallecidos</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6 wow fadeIn" data-wow-delay="500">
+            <div class="media">
+              <div class="d-flex">
+                <img src="{% static 'core/images/icon/corona-green-1.png' %}" alt="" />
+              </div>
+              <div class="media-body">
+                <h2>20,951</h2>
+                <p>Recuperados</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6 wow fadeIn" data-wow-delay="600">
+            <div class="media">
+              <div class="d-flex">
+                <img src="{% static 'core/images/icon/corona-yellow-1.png' %}" alt="" />
+              </div>
+              <div class="media-body">
+                <h2>1,825</h2>
+                <p>Nuevos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Worldwide Tracker Area =================-->
+
+    <!--================Lavado de Manos =================-->
+    <section class="washing_process_area pad_btm">
+      <div class="container">
+        <div class="main_title text-center white">
+          <h5>Proceso de lavado de manos</h5>
+          <h2>Cómo lavarse las manos</h2>
+        </div>
+        <div class="washing_process_inner row">
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="400ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-1.png' %}" alt="" />
+                <div class="number">
+                  1
+                </div>
+              </div>
+              <p><span>Aplique jabón </span> y junte las manos</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="500ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-2.png' %}" alt="" />
+                <div class="number">
+                  2
+                </div>
+              </div>
+              <p><span>Use una mano </span> para frotar el dorso de la otra y viceversa</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="600ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-3.png' %}" alt="" />
+                <div class="number">
+                  3
+                </div>
+              </div>
+              <p><span>Frote sus manos </span> juntas y limpie entre sus dedos</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="700ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-4.png' %}" alt="" />
+                <div class="number">
+                  4
+                </div>
+              </div>
+              <p><span>Frote la parte posterior </span> de sus dedos contra sus palmas</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="800ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-5.png' %}" alt="" />
+                <div class="number">
+                  5
+                </div>
+              </div>
+              <p><span>Frote el pulgar </span> usando su otra mano y viceversa</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="900ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-6.png' %}" alt="" />
+                <div class="number">
+                  6
+                </div>
+              </div>
+              <p><span>Frote las puntas </span> de los dedos en la palma de la otra mano y viceversa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Lavado de Manos =================-->
+
+    <!--================Client Logo Area =================-->
+    <section class="client_logo_area">
+      <div class="container">
+        <div class="client_slider">
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-1.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-2.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-3.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-4.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-5.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-6.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-1.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-2.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-3.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-4.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-5.png' %}" alt="" />
+          </div>
+          <div class="item">
+            <img src="{% static 'core/images/client-logo/client-logo-6.png' %}" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Client Logo Area =================-->
+
+    {% endblock content %}

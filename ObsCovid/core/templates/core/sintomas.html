@@ -1,0 +1,97 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+    {% block content %}
+    <!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area">
+      <div class="container">
+        <div class="breadcrumb_text">
+          <h6 class="wow fadeInUp">Síntomas de COVID-19</h6>
+          <h3 class="wow fadeInUp" data-wow-delay="0.2s">Cuáles son los síntomas básicos?</h3>
+          <ul class="nav justify-content-center wow fadeInUp" data-wow-delay="0.3s">
+            <li><a href="{% url 'core:home' %}">Home</a></li>
+            <li><a href="">Síntomas</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--================End Breadcrumb Area =================-->
+
+    <!--================Symptoms Area =================-->
+    <section class="symptoms_area">
+      <div class="container">
+        <ul class="nav image_list">
+          <li><img src="{% static 'core/images/symptoms-user/sm-1.png' %}" alt=""></li>
+          <li><img src="{% static 'core/images/symptoms-user/sm-2.png' %}" alt=""></li>
+          <li><img src="{% static 'core/images/symptoms-user/sm-3.png' %}" alt=""></li>
+        </ul>
+        <div class="row symptoms_inner">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="400ms">
+            <div class="symptoms_item">
+              <div class="media">
+                <div class="d-flex">
+                  <img src="{% static 'core/images/symptoms-user/fiebre.png' %}" width="150" height="150" alt="" />
+                </div>
+                <div class="media-body">
+                  <h4>Fiebre alta</h4>
+                  <p>
+                    La fiebre es un síntoma clave, dicen los expertos. No te obsesiones con un
+                    número, pero sepa que no es fiebre hasta que la temperatura
+                    alcanza al menos 39 °C.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="500ms">
+            <div class="symptoms_item">
+              <div class="media">
+                <div class="d-flex">
+                  <img src="{% static 'core/images/symptoms-user/dificultad.png' %}" width="150" height="150" alt="" />
+                </div>
+                <div class="media-body">
+                  <h4>Dificultad para respirar</h4>
+                  <p>
+                    Alrededor de 1 de cada 6 personas que se contagian con COVID-19 
+                    desarrolla dificultad para respirar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="600ms">
+            <div class="symptoms_item">
+              <div class="media">
+                <div class="d-flex">
+                  <img src="{% static 'core/images/symptoms-user/tos.png' %}" width="150" height="150" alt="" />
+                </div>
+                <div class="media-body">
+                  <h4>Tos Seca</h4>
+                  <p>
+                    La tos es otro síntoma clave, pero no es cualquier
+                    tos, es una tos seca que siente en el pecho.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="700ms">
+            <div class="symptoms_item">
+              <div class="media">
+                <div class="d-flex">
+                  <img src="{% static 'core/images/symptoms-user/mareos.png' %}" width="150" height="150" alt="" />
+                </div>
+                <div class="media-body">
+                  <h4>Dolor de Cabeza</h4>
+                  <p>
+                    Si usted siente calor al tocar su pecho o espalda. Es un signo común y también puede aparecer en 2 a 10 días si se ha contagiado.                    
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Symptoms Area =================-->
+    {% endblock content %}

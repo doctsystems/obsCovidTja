@@ -1,0 +1,260 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--================Prevención Banner Area =================-->
+    <section class="prevention_banner">
+        <div class="container">
+            <div class="prevention_text">
+                <h6 class="wow fadeInUp">Qué necesitas hacer</h6>
+                <h3 class="wow fadeInUp" data-wow-delay="0.2s">Cómo prevenir el COVID-19?</h3>
+                <ul class="nav justify-content-center wow fadeInUp" data-wow-delay="0.3s">
+                    <li><a href="{% url 'core:home' %}">Home</a></li>
+                    <li><a href="">Prevención</a></li>
+                </ul>
+                <img class="img-fluid" src="{% static 'core/images/breadcrumb/prevention-persong.png' %}" alt="">
+            </div>
+        </div>
+    </section>
+    <!--================Home Prevención Banner Area =================-->
+
+    <!--================Protect Yourself Area =================-->
+    <section class="protect_yourself_area p_100">
+        <div class="container">
+            <div class="main_title_2 text-center">
+                <h2 class="wow fadeInUp">Mantenga <span>distanciamiento social</span> para estar seguro</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.2s">Con el aumento de casos de COVID-19 cada
+                    día, los psicólogos ofrecen ideas sobre cómo
+                    distanciarse de los demás, mientras obtiene el apoyo social que necesita.</p>
+            </div>
+            <div class="row protect_inner flex-row-reverse">
+                <div class="col-lg-6">
+                    <div class="main_title">
+                        <h5>Qué necesitas hacer</h5>
+                        <h2>Cómo protegerte?</h2>
+                    </div>
+                    <div class="row protect_list_inner">
+                        <div class="col-6">
+                            <div class="protect_list_item">
+                                <div class="protect_list_title">
+                                    <h3>Deberías hacer</h3>
+                                    <h6>Asegúrate de seguirlo</h6>
+                                </div>
+                                <ul class="nav flex-column">
+                                    <li>
+                                        <a href="#"><i class="linearicons-home4"></i>Quédate en casa</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-desk-tape"></i>Usa máscaras</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-couch"></i>Desinfecte su casa y las superficies diariamente</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-rain"></i>Lávese las manos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-thermometer"></i>Autoaislamiento frecuente</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="protect_list_item red">
+                                <div class="protect_list_title">
+                                    <h3>Deberías evitar</h3>
+                                    <h6>Asegúrate de seguirlo</h6>
+                                </div>
+                                <ul class="nav flex-column">
+                                    <li>
+                                        <a href="#"><i class="linearicons-man-woman"></i>Reuniones sociales</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-paw"></i>Contacto con animales</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-woman"></i>Tocarte los ojos, la nariz, y la boca</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-hand"></i>Evitar el saludo de manos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="linearicons-plane-crossed"></i>Viajes de larga distancia</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="protect_img">
+                        <img class="img-fluid" src="{% static 'core/images/proteccion.png' %}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Protect Yourself Area =================-->
+
+    <!--================Prevent Area =================-->
+    <section class="prevent_area prevent_right">
+        <div class="container">
+            <div class="row prevent_inner flex-row-reverse">
+                <div class="col-lg-6">
+                    <div class="prevent_item_inner row">
+                        <div class="col-sm-6">
+                            <div class="prevent_item wow fadeInUp">
+                                <div class="prevent_img">
+                                    <img class="img-fluid" src="{% static 'core/images/prevent/prevencion-1.png' %}" alt="" />
+                                </div>
+                                <div class="prevent_text">
+                                    <h4>Quédate en casa</h4>
+                                    <p>
+                                        Quédese en casa, si percibe los síntomas
+                                        consulte a su médico por teléfono.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="prevent_item wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="prevent_img">
+                                    <img class="img-fluid" src="{% static 'core/images/prevent/prevencion-3.png' %}" alt="" />
+                                </div>
+                                <div class="prevent_text">
+                                    <h4>Lávate las manos con frecuencia</h4>
+                                    <p>
+                                        Lávese las manos con un desinfectante a base de alcohol o lávelas con jabón durante al menos 20 segundos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="prevent_item wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="prevent_img">
+                                    <img class="img-fluid" src="{% static 'core/images/prevent/prevencion-2.png' %}" alt="" />
+                                </div>
+                                <div class="prevent_text">
+                                    <h4>Mantener la distancia social</h4>
+                                    <p>
+                                        Mantenga al menos 2 metros de distancia entre usted y cualquier persona si se encuentra en alguna aglomeracion.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="prevent_item wow fadeInUp" data-wow-delay="0.6s">
+                                <div class="prevent_img">
+                                    <img class="img-fluid" src="{% static 'core/images/prevent/prevencion-4.png' %}" alt="" />
+                                </div>
+                                <div class="prevent_text">
+                                    <h4>Usar mascarilla</h4>
+                                    <p>
+                                        Cuando estás cerca de otras personas y antes de ingresar a un centro de atención médica, bancos, mercados, etc.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="prevent_details">
+                        <div class="prevent_details_text">
+                            <h5>Que deberias hacer</h5>
+                            <h2>Cómo prevenir el coronavirus?</h2>
+                            <p>
+                                Algunos detalles sobre cómo se propaga la enfermedad son desconocidos y se están determinando. La OMS y los CDC afirman que se transmite principalmente durante el contacto cercano y por las gotas respiratorias
+                                producido cuando la gente tose o estornuda; con contacto cercano dentro de 1 a 2 metros. Un estudio en Singapur encontró que una tos descubierta puede conducir a que las gotas viajen hasta 4.5 metros.
+                            </p>
+                            <p>
+                                También se pueden producir gotitas respiratorias durante la exhalación, incluso cuando se habla, aunque el virus generalmente no se transmite por el aire. Estas gotitas pueden caer en la boca o la nariz de las personas cercanas y posiblemente ser inhaladas a los pulmones.
+                            </p>
+                            <a class="green_btn" href="#"><i class="linearicons-shield-check"></i> Leer más sobre Prevención</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Prevent Area =================-->
+
+    <!--================Lavado de Manos =================-->
+    <section class="washing_process_area pad_btm">
+      <div class="container">
+        <div class="main_title text-center white">
+          <h5>Proceso de lavado de manos</h5>
+          <h2>Cómo lavarse las manos</h2>
+        </div>
+        <div class="washing_process_inner row">
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="400ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-1.png' %}" alt="" />
+                <div class="number">
+                  1
+                </div>
+              </div>
+              <p><span>Aplique jabón </span> y junte las manos</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="500ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-2.png' %}" alt="" />
+                <div class="number">
+                  2
+                </div>
+              </div>
+              <p><span>Use una mano </span> para frotar el dorso de la otra y viceversa</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="600ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-3.png' %}" alt="" />
+                <div class="number">
+                  3
+                </div>
+              </div>
+              <p><span>Frote sus manos </span> juntas y limpie entre sus dedos</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="700ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-4.png' %}" alt="" />
+                <div class="number">
+                  4
+                </div>
+              </div>
+              <p><span>Frote la parte posterior </span> de sus dedos contra sus palmas</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="800ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-5.png' %}" alt="" />
+                <div class="number">
+                  5
+                </div>
+              </div>
+              <p><span>Frote el pulgar </span> usando su otra mano y viceversa</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4 col-6 wow fadeIn" data-wow-delay="900ms">
+            <div class="washing_item">
+              <div class="icon">
+                <img src="{% static 'core/images/icon/washing-6.png' %}" alt="" />
+                <div class="number">
+                  6
+                </div>
+              </div>
+              <p><span>Frote las puntas </span> de los dedos en la palma de la otra mano y viceversa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Lavado de Manos =================-->
+
+{% endblock content %}

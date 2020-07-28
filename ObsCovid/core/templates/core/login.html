@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'core/css/login.css' %}" />
+{% endblock stylesheets %}
+
+{% block title %} Login {% endblock title %}
+{% block mobile_menu %}{% endblock mobile_menu %}
+{% block sidebar %}{% endblock sidebar %}
+{% block header %}{% endblock header %}
+
+{% block login %}
+<div class="account-wrapper">
+    <div class="account-page">
+		<div class="account-center">
+			<div class="account-box">
+                
+                <form class="appoinment_form" method="POST">
+                	{% csrf_token %}
+					<div class="account-logo">
+					    <a href="{% url 'core:home' %}"><img src="{% static 'core/images/logo.png' %}" alt=""></a>
+					</div>
+                    <div class="form-group">
+		                <input class="form-control" type="text" id="id_username" name="username"/>
+		                <label for="id_username"><i class="linearicons-user"></i>Usuario</label>
+		            </div>
+                    <div class="form-group">
+		                <input class="form-control" type="password" id="id_password" name="password"/>
+		                <label for="id_password"><i class="linearicons-envelope-open"></i>Contraseña</label>
+		            </div>
+                    <div class="form-group checkbox_field">
+		                <div class="checkbox">
+		                    <input type="checkbox" value="None" id="a_policy" name="check" />
+		                    <label class="l_text" for="a_policy">Recordarme</label>
+		                </div>
+		                <a href="">Olvido su contraseña?</a>
+		            </div>
+		            {% if form.errors %}
+					    <p class=" text-danger text-center">Lo sentimos, pero algo salió mal.</br>
+					    Por favor verifique su nombre de usuario y contraseña.</p>
+					{% endif %}
+                    <div class="form-group text-center">
+		                <button type="submit" class="green_btn account-btn">Iniciar Sesion</button>
+		            </div>
+                    <div class="text-center register-link">
+				        No tiene una cuenta? <a href="{% url 'core:home' %}">Volver atras...</a>
+				    </div>
+	                <!-- {{ form.as_p }}
+	                <button type="submit" class="green_btn account-btn">Iniciar Sesion</button> -->
+                </form>
+            </div>
+		</div>
+    </div>
+</div>
+{% endblock login %}
+
+{% block footer %}{% endblock footer%}

@@ -1,0 +1,253 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="grid grid--margin">
+	<div class="grid__row dashboard-intro">
+		<div class="grid__col grid__col--margin grid__col--padding bg-white">
+			<div class="grid__row">
+				<div class="grid__col grid__col--margin grid__col--12">
+					<div class="dashboard-intro__title">Reporte <span>epidemiologico</span></div>
+					<div class="dashboard-intro__subtitle">Fuente: Unidad de Epidemiologia Nacional del Ministerio de Salud.</div>
+				</div>
+			</div>
+			<div class="grid__row">
+				<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-gray10 mb0">
+					<div class="grid__row justify-sb">
+						<div class="grid__col grid__col--mb-12">
+							<h3 class="grid__col-title">Hoy</h3>
+						</div>
+					</div>
+					<div class="d-flex align-c">
+						<div class="info-nr info-nr--strong gradient-blue gradient-text">225</div>
+					</div>
+				</div>
+				<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-gray10 mb0">
+					<div class="grid__row justify-sb">
+						<div class="grid__col grid__col--mb-12">
+							<h3 class="grid__col-title">Total Confirmados</h3>
+						</div>
+					</div>
+					<div class="d-flex align-c">
+						<div class="info-nr info-nr--strong gradient-blue gradient-text">3,050</div>
+					</div>
+				</div>
+				<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-gray10 mb0">
+					<div class="grid__row justify-sb">
+						<div class="grid__col grid__col--mb-12">
+							<h3 class="grid__col-title">Recuperados</h3>
+						</div>
+					</div>
+					<div class="d-flex align-c">
+						<div class="info-nr info-nr--strong gradient-lightblue gradient-text">283</div>
+					</div>
+				</div>
+				<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-gray10 mb0">
+					<div class="grid__row justify-sb">
+						<div class="grid__col grid__col--mb-12">
+							<h3 class="grid__col-title">Fallecidos</h3>
+						</div>
+					</div>
+					<div class="d-flex align-c">
+						<div class="info-nr info-nr--strong gradient-pink gradient-text">79</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid__row">
+		<div class="grid__col grid__col--23 grid__col--margin grid__col--padding bg-white">
+			<div class="grid__row justify-sb">
+				<div class="grid__col grid__col--mb-12">
+					<h3 class="grid__col-title">Actividad</h3>
+					<span class="grid__col-subtitle">ULTIMO AÑO</span>
+				</div>
+				<div class="grid__col grid__col--mb-12 d-flex justify-fe">
+					<span class="show-more show-more--ellipsis has-dropdown" data-dropdown="activitydropdown"></span>
+				</div>
+			</div>
+			<nav class="dropdown-menu dropdown-menu--content" id="activitydropdown"> 			
+				<ul>
+					<li><a href="#">Mas Detalles</a></li>
+					<li><a href="#">Ver Actividad</a></li>
+				</ul>
+			</nav>
+			<canvas id="ActivityChart" width="100%" height="40"></canvas>
+		</div>
+		<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-white">
+			<div class="grid__row justify-sb">
+				<div class="grid__col grid__col--mb-12">
+					<h3 class="grid__col-title">Pacientes Reciente</h3>
+					<span class="grid__col-subtitle">ULTIMA SEMANA</span>
+				</div>
+				<div class="grid__col grid__col--mb-12 d-flex justify-fe">
+					<span class="show-more show-more--plus bg-gray10 color-gray600 has-dropdown" data-dropdown="newddropdown">+</span>
+				</div>
+			</div>
+			<nav class="dropdown-menu dropdown-menu--content" id="newddropdown"> 			
+				<ul>
+					<li><a href="#">Mas Detalles</a></li>
+					<li><a href="#">Compartir</a></li>
+				</ul>
+			</nav>
+			<div class="table table--no-header table--new-doctors">
+				<div class="table__body">
+					<div class="table__row selected">
+						<div class="table__cell"><div class="avatar-thumb avatar-thumb--table">
+							<img src="{% static 'dashboard/images/avatar-3.jpg' %}" alt="" title=""/></div></div>
+						<div class="table__cell">Olivia Wilson</div>
+						<div class="table__cell color-blue">Cardiology	</div>
+						<div class="table__cell">
+							<span class="show-more show-more--ellipsis has-dropdown" data-dropdown="dropd1"></span>
+							<nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" id="dropd1"> 			
+								<ul>
+									<li><a href="#">View Profile</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<div class="table__row">
+						<div class="table__cell"><div class="avatar-thumb avatar-thumb--table">
+							<img src="{% static 'dashboard/images/avatar-1.jpg' %}" alt="" title=""/></div></div>
+						<div class="table__cell">Oliver Barnes</div>
+						<div class="table__cell color-blue">Pathology 	</div>
+						<div class="table__cell">
+							<span class="show-more show-more--ellipsis has-dropdown" data-dropdown="dropd2"></span>
+							<nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" id="dropd2"> 			
+								<ul>
+									<li><a href="#">View Profile</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					
+					<div class="table__row">
+						<div class="table__cell"><div class="avatar-thumb avatar-thumb--table">
+							<img src="{% static 'dashboard/images/avatar-2.jpg' %}" alt="" title=""/></div></div>
+						<div class="table__cell">Maya Cooper</div>
+						<div class="table__cell color-blue">Gastroenterology</div>
+						<div class="table__cell">
+							<span class="show-more show-more--ellipsis has-dropdown" data-dropdown="dropd3"></span>
+							<nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" id="dropd3"> 			
+								<ul>
+									<li><a href="#">View Profile</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<div class="table__row">
+						<div class="table__cell"><div class="avatar-thumb avatar-thumb--table">
+							<img src="{% static 'dashboard/images/avatar-4.jpg' %}" alt="" title=""/></div></div>
+						<div class="table__cell">Adam King</div>
+						<div class="table__cell color-blue">Endocrinology	</div>
+						<div class="table__cell">
+							<span class="show-more show-more--ellipsis has-dropdown" data-dropdown="dropd4"></span>
+							<nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" id="dropd4"> 			
+								<ul>
+									<li><a href="#">View Profile</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					
+					<div class="table__row">
+						<div class="table__cell"><div class="avatar-thumb avatar-thumb--table">
+							<img src="{% static 'dashboard/images/avatar-5.jpg' %}" alt="" title=""/></div></div>
+						<div class="table__cell">Julia Henderson</div>
+						<div class="table__cell color-blue">Orthodontics</div>
+						<div class="table__cell">
+							<span class="show-more show-more--ellipsis has-dropdown" data-dropdown="dropd5"></span>
+							<nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" id="dropd5"> 			
+								<ul>
+									<li><a href="#">View Profile</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<div class="table__row">
+						<div class="table__cell"><div class="avatar-thumb avatar-thumb--table">
+							<img src="{% static 'dashboard/images/avatar-6.jpg' %}" alt="" title=""/></div></div>
+						<div class="table__cell">Sienna Butler</div>
+						<div class="table__cell color-blue">Paediatrics</div>
+						<div class="table__cell">
+							<span class="show-more show-more--ellipsis has-dropdown" data-dropdown="dropd6"></span>
+							<nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" id="dropd6"> 			
+								<ul>
+									<li><a href="#">View Profile</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+
+				</div>
+				
+			</div>
+			<!-- TABLE end -->
+		</div>
+	</div>
+
+	<div class="grid__row">
+		<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-white mb0">
+			<div class="grid__row justify-sb">
+				<div class="grid__col grid__col--mb-12">
+					<h3 class="grid__col-title">Calendario</h3>
+					<span class="grid__col-subtitle">EVENTOS DEL MES</span>
+				</div>
+			</div>
+			<div id="taskscalendar"></div>
+		</div>
+		
+		<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-white mb0">
+			<div class="grid__row justify-sb">
+				<div class="grid__col grid__col--mb-12">
+					<h3 class="grid__col-title">Enfermedades de Base</h3>
+					<span class="grid__col-subtitle">MAS COMUNES</span>
+				</div>
+			</div>
+			<canvas id="DiseasesChart" width="100%" height="80"></canvas>
+		</div>
+		<div class="grid__col grid__col--13 grid__col--margin grid__col--padding bg-white mb0">
+			<div class="grid__row justify-sb">
+				<div class="grid__col grid__col--mb-12">
+					<h3 class="grid__col-title">Ultimos Reportes</h3>
+					<span class="grid__col-subtitle">HACE 5 DIAS</span>
+				</div>
+			</div>
+			<canvas id="ReportsChart" width="100%" height="40"></canvas>
+
+			<div class="table table--no-header table--latest-reports">
+				<div class="table__body">
+					<div class="table__row">
+						<div class="table__cell">Infectious disease.pdf</div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--lightblue-bg">View</a></div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--blue-bg">Download</a></div>		
+					</div>
+					<div class="table__row">
+						<div class="table__cell">Paediatric.doc</div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--lightblue-bg">View</a></div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--blue-bg">Download</a></div>		
+					</div>
+					<div class="table__row">
+						<div class="table__cell">Hepatology.pdf</div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--lightblue-bg">View</a></div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--blue-bg">Download</a></div>		
+					</div>
+					<div class="table__row">
+						<div class="table__cell">General Surgery.doc</div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--lightblue-bg">View</a></div>
+						<div class="table__cell"><a href="#" class="button button--small-table button--blue-bg">Download</a></div>		
+					</div>
+				</div>
+			</div>
+			<!-- TABLE end -->
+		</div>
+	</div>
+</div>
+{% endblock content %}
