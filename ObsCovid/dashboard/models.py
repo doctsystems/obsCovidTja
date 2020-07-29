@@ -6,7 +6,7 @@ class Persona(ClaseModelo):
 	nombres=models.CharField(max_length=20)
 	apellidos=models.CharField(max_length=30)
 	carnet=models.CharField(max_length=10)
-	celular=models.IntegerField(default=0)
+	celular=models.CharField(max_length=8, default='00111222')
 	direccion=models.CharField(max_length=100)
 	fecha_nacimiento=models.DateField()
 
@@ -120,7 +120,7 @@ class Departamento(ClaseModelo):
 
 class Municipio(ClaseModelo):
 	nombre=models.CharField(max_length=30)
-	departamento=models.ForeignKey(Departamento, blank=True, null=True, on_delete=models.SET_NULL)
+	departamento=models.ForeignKey(Departamento, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return '{}'.format(self.nombre)
@@ -135,10 +135,10 @@ class Municipio(ClaseModelo):
 class Entidad(ClaseModelo):
 	nombre=models.CharField(max_length=100)
 	direccion=models.CharField(max_length=100)
-	telefono=models.IntegerField(default=0)
+	telefono=models.CharField(max_length=8, default='0011122')
 	observaciones=models.TextField(blank=True, null=True)
 
-	ciudad=models.ForeignKey(Municipio, blank=True, null=True, on_delete=models.SET_NULL)
+	ciudad=models.ForeignKey(Municipio, null=True, on_delete=models.SET_NULL)
 	ubicacion=models.PointField(srid=4326)
 
 	def __str__(self):
@@ -152,18 +152,18 @@ class Entidad(ClaseModelo):
 		verbose_name_plural='Entidades'
 
 class Contacto(ClaseModelo):
-	datos_personales=models.ForeignKey(Persona, blank=True, null=True, on_delete=models.SET_NULL)
+	datos_personales=models.ForeignKey(Persona, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return '{} {}'.format(self.datos_personales.nombres, self.datos_personales.apellidos)
 
 	class Meta():
-		verbose_name_plural='Contactos'
+		verbose_name_plural='Contactos Directos'
 
 class Paciente(ClaseModelo):
-	datos_personales=models.ForeignKey(Persona, blank=True, null=True, on_delete=models.SET_NULL)
+	datos_personales=models.ForeignKey(Persona, null=True, on_delete=models.SET_NULL)
 	contactos_directos=models.ManyToManyField(Contacto)
-	ciudad=models.ForeignKey(Municipio, blank=True, null=True, on_delete=models.SET_NULL)
+	ciudad=models.ForeignKey(Municipio, null=True, on_delete=models.SET_NULL)
 	ubicacion=models.PointField(srid=4326)
 
 	def __str__(self):
@@ -173,10 +173,10 @@ class Paciente(ClaseModelo):
 		verbose_name_plural='Pacientes'
 
 class Medico(ClaseModelo):
-	datos_personales=models.ForeignKey(Persona, blank=True, null=True, on_delete=models.SET_NULL)
+	datos_personales=models.ForeignKey(Persona, null=True, on_delete=models.SET_NULL)
 	matricula=models.CharField(max_length=20)
-	especialidad=models.ForeignKey(Especialidad, blank=True, null=True, on_delete=models.SET_NULL)
-	entidad_medica=models.ForeignKey(Entidad, blank=True, null=True, on_delete=models.SET_NULL)
+	especialidad=models.ForeignKey(Especialidad, null=True, on_delete=models.SET_NULL)
+	entidad_medica=models.ForeignKey(Entidad, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return '{} {} {}'.format(self.matricula, self.datos_personales.nombres,self.datos_personales.apellidos)
@@ -208,10 +208,10 @@ class Receta(ClaseModelo):
 
 class HistoriaClinica(ClaseModelo):
 	fecha=models.DateField()
-	paciente=models.ForeignKey(Paciente, blank=True, null=True, on_delete=models.SET_NULL)
+	paciente=models.ForeignKey(Paciente, null=True, on_delete=models.SET_NULL)
 	enfermedades=models.ManyToManyField(EnfermedadBase, help_text="Seleccione una enfermedad.")
 	sintomas=models.ManyToManyField(Sintomatologia, help_text="Seleccione un sintoma.")
-	medico=models.ForeignKey(Medico, blank=True, null=True, on_delete=models.SET_NULL)
+	medico=models.ForeignKey(Medico, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return '{} {}'.format(self.fecha, self.paciente.datos_personales.nombres)
@@ -222,8 +222,8 @@ class HistoriaClinica(ClaseModelo):
 class Tratamiento(ClaseModelo):
 	fecha_inicio=models.DateField()
 	fecha_final=models.DateField()
-	lista_medicacion=models.ForeignKey(Receta, blank=True, null=True, on_delete=models.SET_NULL)
-	historial=models.ForeignKey(HistoriaClinica, blank=True, null=True, on_delete=models.SET_NULL)
+	lista_medicacion=models.ForeignKey(Receta, null=True, on_delete=models.SET_NULL)
+	historial=models.ForeignKey(HistoriaClinica, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return '{} {}'.format(self.fecha_inicio, self.fecha_final)
