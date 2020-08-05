@@ -56,6 +56,16 @@
           <li class="active"><a href="{% url 'core:home' %}">Home</a></li>
 	      <li><a href="{% url 'core:sintomas' %}">Sintomas</a></li>
 	      <li><a href="{% url 'core:prevencion' %}">Prevencion</a></li>
+        <li class="dropdown submenu">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="prevention.html" role="button"
+            aria-haspopup="true" aria-expanded="false">Protocolos</a>
+          <i class="linearicons-chevron-down mobile_dropdown" aria-hidden="true" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu">
+            <li><a href="https://drive.google.com/file/d/1r253ATVZBDNO-lG7hf2idRlJiNbupNwu/view" target="_blank">Clinica San Rafaela</a></li>
+            <li><a href="">Sedes</a></li>
+            <li><a href="">Otros</a></li>
+          </ul>
+        </li>
 	      <li>
           <a href="#">Acerca de
             <i class="linearicons-chevron-down"></i>
@@ -67,7 +77,6 @@
             <li><a href="">Team</a></li>
           </ul>
         </li>
-	      <li><a href="">Acerca de</a></li>
 	      <li><a href="">Contacto</a></li>
         </ul>
       </div>
@@ -167,7 +176,7 @@
     {% endblock sidebar %}
     <!--================End Sidebar Form Area =================-->
 
-    <!--================Header Area =================-->
+    <!--================Header Area - Menu Principal =================-->
     {% block header %}
     <header class="header_area">
       <div class="main_menu">
@@ -184,6 +193,16 @@
                 <li><a href="{% url 'core:home' %}">Home</a></li>
                 <li><a href="{% url 'core:sintomas' %}">Sintomas</a></li>
                 <li><a href="{% url 'core:prevencion' %}">Prevencion</a></li>
+                <li class="dropdown submenu">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="prevention.html" role="button"
+                    aria-haspopup="true" aria-expanded="false">Protocolos</a>
+                  <i class="linearicons-chevron-down mobile_dropdown" aria-hidden="true" data-toggle="dropdown"></i>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://drive.google.com/file/d/1r253ATVZBDNO-lG7hf2idRlJiNbupNwu/view" target="_blank">Clinica San Rafaela</a></li>
+                    <li><a href="">Sedes</a></li>
+                    <li><a href="">Otros</a></li>
+                  </ul>
+                </li>
                 <li class="dropdown submenu">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="prevention.html" role="button"
                     aria-haspopup="true" aria-expanded="false">Acerca de </a>
@@ -239,7 +258,7 @@
           </ul>
           <h6>
             Designed with <i class="linearicons-heart"></i>
-            by <span>diegoosvaldo85</span>
+            by <span><a href="https://twitter.com/diegocruztorrez" target="_blank">diegoosvaldo85</a></span>
           </h6>
         </div>
       </div>

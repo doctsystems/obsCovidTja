@@ -64,7 +64,8 @@
     arrows: false,
     swipe: true,
     autoplay: true,
-    autoplaySpeed: 5000,
+    slideSpeed : 3000,
+    autoplaySpeed: 2000,
     focusOnSelect: false,
     responsive: [
       {
