@@ -4131,7 +4131,7 @@ button:focus {
 /* Contact Form Area css
 ============================================================================================ */
 .contact_area {
-  padding: 60px 0px 140px;
+  padding: 60px 0px 0px;
 }
 
 .contact_details .contact_details_item {

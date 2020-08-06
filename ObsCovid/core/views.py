@@ -9,3 +9,6 @@ class SintomasPageView(TemplateView):
 
 class PrevencionPageView(TemplateView):
 	template_name = "core/prevencion.html"
+
+class ContactoPageView(TemplateView):
+	template_name = "core/contacto.html"
